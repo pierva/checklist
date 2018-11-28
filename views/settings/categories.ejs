@@ -1,0 +1,118 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+
+<div class="container mt-5">
+  <h1 class="text-center font-weight-light">Categories and Checklists setup</h1>
+  <div class="col-12 mb-3">
+    <a href="/settings">Go Back</a>
+    <form action="/settings/categories" method="post" class="form-inline mb-3" id="new-category">
+        <label for="categoryName" class="sr-only">Category Name</label>
+        <div class="form-group p-0 col-6">
+          <input class="form-control w-100" type="text" name="categoryName" placeholder="category">
+        </div>
+        <div class="form-group p-0 col-6">
+          <label for="submitNewCategory" class="sr-only">Add New Category</label>
+            <button name="submitNewCategory" class="btn btn-primary btn-block">Add Category</button>
+        </div>
+    </form>
+  </div>
+
+  <div class="m-3">
+    <ul class="categories-list">
+      <% categories.forEach((category) => { %>
+          <li>
+            <div class="row ml-0">
+              <div class="col-7 category-name">
+                <%= category.name %>
+              </div>
+              <div class="col-5 cat-header pl-0">
+                <form class="delete-category-form" action="/api/categories/<%= category._id%>"
+                  method="POST">
+                  <input type="submit" class="btn btn-sm btn-outline-danger" value="Delete">
+                  <i class="fas fa-caret-square-down open-list"></i>
+                </form>
+              </div>
+            </div>
+            <div class="row m-0 mb-2 checklist-new-form">
+              <form action="/api/categories/<%=category._id%>"
+                class="form-inline col-12 p-0" method="POST" id="${category._id}">
+                <div class="form-group col-lg-4 col-md-5 col-sm-12 p-0">
+                  <input placeholder="Name" name="checklist[name]" type="text"
+                    class="form-control w-100" required>
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 p-0">
+                  <input placeholder="Code" name="checklist[code]" type="text"
+                  class="form-control w-100" required>
+                </div>
+                <div class="form-group col-lg-3 col-md-2 col-sm-6 p-0">
+                  <label class="col-12 revision-label" for="checklist[revision]">Revision Date</label>
+                  <input placeholder="Revision Date" name="checklist[revision]" type="date"
+                  class="form-control w-100" required>
+                </div>
+                <div class="form-group col-lg-2 col-md-2 col-sm-12 p-0">
+                  <button type="submit" class="btn btn-primary form-control w-100">
+                    <i class="fas fa-plus"></i> Add</button>
+                </div>
+              </form>
+            </div>
+            <div class="checklists-list">
+              <ul>
+                <% category.checklists.forEach((checklist) => { %>
+                  <li class="checklist-item">
+                    <div class="col-12 m-0">
+                      <div class="row">
+                        <span class="col-sm-6 col-12 checklist-code"><%=checklist.code %></span>
+                        <span class="col-sm-6 col-12 revision">Revision:&nbsp; <%=moment(checklist.revision).format('MMM DD, YYYY') %></span>
+                      </div>
+                      <div class="row m-0">
+                        <span><%=checklist.name %></span>
+                      </div>
+
+                      <div class="row m-0 mb-2 checklist-edit-form">
+                        <form action="/api/categories/<%= category._id %>/checklists/<%=checklist._id%>"
+                          class="form-inline col-12 p-0" method="POST">
+                          <div class="form-group col-lg-4 col-md-5 col-sm-12 p-0">
+                            <input placeholder="Name" name="checklist[name]" type="text"
+                              class="form-control-sm w-100" value="<%=checklist.name%>" required>
+                          </div>
+                          <div class="form-group col-lg-3 col-md-3 col-sm-6 p-0">
+                            <input placeholder="New Code" name="checklist[code]" type="text"
+                            class="form-control-sm w-100" value="<%=checklist.code%>" required>
+                          </div>
+                          <div class="form-group col-lg-3 col-md-2 col-sm-6 p-0">
+                            <label class="col-12 revision-label" for="checklist[revision]">New Revision Date</label>
+                            <input placeholder="New Revision Date" name="checklist[revision]" type="date"
+                            class="form-control-sm w-100" value="<%=moment(checklist.revision).format('YYYY-MM-DD')%>" required>
+                          </div>
+                          <div class="form-group col-lg-2 col-md-2 col-sm-12 p-0">
+                            <button type="submit" class="btn btn-primary form-control-sm w-100">Update</button>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 p-0 edit-button">
+                          <button class="btn btn-sm btn-outline-warning w-100">Edit</button>
+                        </div>
+                        <div class="col-md-6 p-0">
+                          <form class="delete-form" action="/api/categories/<%= category._id %>/checklists/<%=checklist._id%>"
+                            method="POST">
+                            <input type="submit" class="btn btn-sm btn-outline-danger w-100" value="Delete">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+          </li>
+      <% }); %>
+    </ul>
+  </div>
+</div>
+
+
+
+<% include ../partials/footer %>

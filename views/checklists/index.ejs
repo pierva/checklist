@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+
+<div class="container mt-3">
+  <% include ../partials/digital-clock %>
+
+  <div class="container mt-5 mb-5">
+    <hr class="style-two-white mb-5">
+    <div class="category row col-12">
+      <div class="col-md-6 col-12 mb-3">
+        <a class="btn cst-default btn-lg btn-block" href="/checklists/marine">MARINE</a>
+      </div>
+      <div class="col-md-6 col-12">
+        <a class="btn cst-danger btn-lg btn-block" href="/checklists/marine/emergency">MAR_EMERGENCY</a>
+      </div>
+    </div>
+    <div class="category row col-12 mt-5">
+      <div class="col-md-6 col-12 mb-3">
+        <a class="btn cst-secondary btn-lg btn-block" href="/checklists/technical">TECHNICAL</a>
+      </div>
+      <div class="col-md-6 col-12">
+        <a class="btn cst-danger btn-lg btn-block" href="/checklists/technical/emergency">TEC_EMERGENCY</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% include ../partials/footer %>

@@ -1,0 +1,173 @@
+body {
+  background: url('assets/dark_dotted2.png');
+  color: rgb(220, 220, 220);
+}
+
+
+hr.style-two-white {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(220, 220, 220, 0.75), rgba(0, 0, 0, 0));
+}
+
+hr.style-two{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.background-logo{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /*this way the image will be on the background, behind any other content */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.background-logo li {
+  background-image: url('assets/company_logo.png');
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover; /* it allows the images to take the entire space */
+  background-position: 50% 50%; /* will fit the images perfectly in the page */
+  background-repeat: no-repeat;
+  opacity: 0.1; /*The images start faded out */
+}
+
+.logo img{
+  width: 30px;
+  opacity: 0.6;
+}
+
+.logo img:hover{
+  opacity: 1;
+}
+
+.category{
+  text-align: center;
+}
+
+.categories-list{
+  padding: 0;
+}
+
+.categories-list li{
+  list-style: none;
+  border: 1px solid rgba(220, 220, 220, 0.5);
+  border-radius: 5px;
+}
+
+.categories-list{
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.checklists-list{
+  display: none;
+}
+
+.checklists-list ul{
+  padding: 0;
+}
+
+.cat-header{
+  text-align: right;
+}
+
+.checklist-new-form{
+  display: none;
+}
+
+.open-list {
+  margin-right: 2px;
+  cursor: pointer;
+  transition: ease 0.3 all;
+}
+
+.open-list:hover{
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(194,194,194,0.8);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(194,194,194,0.8);
+  box-shadow: 0px 0px 5px 0px rgba(194,194,194,0.8);
+}
+
+.revision{
+  text-align: right;
+}
+
+.revision-label{
+  display: none!important;
+}
+
+.rotate180{
+  transform: rotate(180deg);
+}
+
+.checklist-edit-form{
+  display: none;
+}
+
+/* input[type="date"]:before{
+  content: attr(placeholder) !important;
+  color: #6d6c6c;
+  margin-right: 0.5em;
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before{
+  content: "" !important;
+  margin-top: -10 !important;
+} */
+
+#landing-header {
+  z-index: 1;  /* z-index:1 takes the element and brind it to the front*/
+  position: relative; /* in order to use x-index the position needs to be different from the default static*/
+  text-align: center;
+  padding-top: 30vh; /*vh stands for view height (50 would be the center but then the content will fall down the center*/
+}
+
+#landing-header h1{
+  color: #fff;
+  font-weight: 400;
+}
+
+#landing-header h2{
+  color: #4a4949;
+}
+
+#login{
+  width: 100%;
+}
+
+#user-list{
+  font-size: 1.3em;
+}
+
+#user-list span{
+  display: inline-block;
+}
+
+#user-list .form-group{
+  margin: 0 auto;
+}
+
+
+@media (max-width: 767.98px) {
+  .revision {
+    text-align: left;
+  }
+}
+
+@media (max-width: 576px){
+  .revision-label{
+    font-size: 12px;
+    display: block!important;
+    margin-bottom: 0;
+  }
+}

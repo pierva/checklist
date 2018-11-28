@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checklists</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap-4.1.3.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="icon" href="stylesheets/assets/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--modernizer allows maximum class compatibility across browsers-->
+    <script src="/lib/modernizr-2.8.3.js" type="text/javascript" async></script>
+  </head>
+  <body>
+
+  <div class= "container">
+      <% if(error && error.length > 0) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      <% if(success && success.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+      <% } %>
+    </div>
+
+  <div id="landing-header">
+ 	  <h1>Checklists Repository</h1>
+ 	  <h2>Carnival Cruise Line</h2>
+
+ 	  <hr class="style-two-white">
+    <div class="container">
+      <form id="login-form" action="/login" method="post">
+        <div class="col-md-6 offset-md-3 col-12 form-group">
+          <input class="form-control mb-2" type="text" name="username" placeholder="username" required>
+          <input class="form-control mb-2" type="password" name="password" placeholder="password" required>
+          <button class="btn btn-sm btn-success" id="login">Login</button>
+        </div>
+      </form>
+      <% if(!users){ %>
+        <div class='new-user'>
+          <a href="/register">Add a new user</a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  <div class="background-logo">
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+
+<% include partials/footer %>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checklists</title>
+    <!-- Make site responsive on mobile/tablet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap css -->
+    <link href="/stylesheets/bootstrap-4.1.3.css" rel="stylesheet">
+    <!-- jQuery Confirm css -->
+    <link rel="stylesheet" href="/stylesheets/jquery-confirm.css">
+
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/modal.css">
+    <link rel="stylesheet" href="/stylesheets/custom-styles.css">
+    <link rel="stylesheet" href="/stylesheets/digital-clock.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="/stylesheets/font/fontawesome/css/all.min.css"> -->
+    <link rel="icon" href="/stylesheets/assets/icon.png">
+
+    <!--modernizer allows maximum class compatibility across browsers-->
+    <script src="/lib/modernizr-2.8.3.js" type="text/javascript" async></script>
+    <script src="/lib/jquery-3.3.1.js"></script>
+    <script src="/lib/moment.js"></script>
+    <script src="/stylesheets/font/fontawesome/js/all.min.js"></script>
+
+  </head>
+
+  <body>
+    <div class= "container">
+      <% if(error && error.length > 0) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      <% if(success && success.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+      <% } %>
+    </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="mb-1" id="modal-description"></h2>
+        <div class="col-md-12 modal-content__inner"></div>
+      </div>
+    </div>

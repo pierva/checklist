@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+
+<div>
+    <h1>Sign Up</h1>
+    <div class="col-md-6 offset-md-3 col-12">
+        <form action="/register" method="post">
+            <label for="password">Username</label>
+            <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="username">
+            </div>
+            <label for="password">Password</label>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Create a strong password">
+            </div>
+            <label for="adminCode">Insert code for admin rights</label>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="adminCode" placeholder="Admin rights code">
+                </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Add New User</button>
+            </div>
+        </form>
+        <% if(currentUser){ %>
+          <a href="/checklists">Go Back</a>
+        <%} else { %>
+          <a href="/">Go Back</a>
+        <% } %>
+
+    </div>
+</div>
+
+<% include ./partials/footer %>
