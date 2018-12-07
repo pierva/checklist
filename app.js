@@ -8,8 +8,7 @@ const express             = require('express'),
       flash               = require("connect-flash"),
       passport            = require("passport"),
       LocalStrategy       = require("passport-local"),
-      User                = require("./models/user.js"),
-      configuration       = require("./public/utilities/config.js");
+      User                = require("./models/user.js");
 
 
 //Require the routes

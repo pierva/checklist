@@ -27,7 +27,7 @@
                 <%= category.name %>
               </div>
               <div class="col-5 cat-header pl-0">
-                <form class="delete-category-form" action="/api/categories/<%= category._id%>"
+                <form class="delete-category-form" action="/settings/categories/<%= category._id%>"
                   method="POST">
                   <input type="submit" class="btn btn-sm btn-outline-danger" value="Delete">
                   <i class="fas fa-caret-square-down open-list"></i>

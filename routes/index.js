@@ -2,7 +2,8 @@ const express      = require("express"),
       router       = express.Router(),
       passport     = require("passport"),
       User         = require("../models/user"),
-      middleware   = require("../middleware");
+      middleware   = require("../middleware"),
+      navBarConfig = require("../controllers/config-controller");
 
 
 //HOME >>> Landing page
@@ -42,14 +43,13 @@ router.post("/register", middleware.isFirstUser, (req, res) =>{
 });
 
 //handle login logic
-router.post("/login", passport.authenticate("local",
+router.post("/login", navBarConfig.updateNavBarDropDown, passport.authenticate("local",
     {
       successRedirect: "/checklists",
       failureRedirect: "/",
       badRequestMessage : 'Invalid credentials.',
-      failureFlash: true
-    }), (req, res)=> {
-});
+      failureFlash: true,
+    }));
 
 //logout route
 router.get("/logout", (req, res) => {
