@@ -1,7 +1,8 @@
 const express    = require('express'),
       router     = express.Router(),
       middleware = require('../middleware'),
-      Category   = require('../models/category');
+      Category   = require('../models/category'),
+      navBarConfig = require('../controllers/config-controller');
 
 //INDEX >>> Show the home page
 router.get("/", middleware.isLoggedIn, (req, res) => {
@@ -9,7 +10,7 @@ router.get("/", middleware.isLoggedIn, (req, res) => {
 });
 
 //CATEGORIES >>> Show the category setup page
-router.get("/categories", middleware.isAdmin, (req, res) => {
+router.get("/categories", middleware.isAdmin, navBarConfig.updateNavBarDropDown, (req, res) => {
   Category.find({})
     .populate('checklists')
     .exec((err, categories) => {

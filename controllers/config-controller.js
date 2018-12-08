@@ -15,7 +15,6 @@ module.exports ={
           let name = foundCategory.name;
           checklistOptions[name] = _.map(foundCategory.checklists, 'name');
         });
-        console.log(checklistOptions);
         req.app.locals.navOptions = checklistOptions;
         next();
       }
