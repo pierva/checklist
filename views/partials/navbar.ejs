@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div class="navbar-brand logo">
     <a href="/checklists">
       <img src="/stylesheets/assets/company_logo.png" alt="Company Logo">
@@ -18,7 +18,11 @@
           MAR
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMar">
-          <a class="dropdown-item" href="#">Checklist 1</a>
+        <% if(navOptions.Marine){ %>
+          <% navOptions["Marine"].forEach((option) => { %>
+            <a class="dropdown-item" href="#"><%= option %></a>
+          <% }); %>
+        <% } %>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -26,7 +30,11 @@
           TEC
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownTec">
-          <a class="dropdown-item" href="#">Checklist 1</a>
+        <% if(navOptions.Technical){ %>
+          <% navOptions["Technical"].forEach((option) => { %>
+              <a class="dropdown-item" href="#"><%= option %></a>
+          <% }); %>
+        <% } %>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -34,7 +42,11 @@
           EMR
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownEmr">
-          <a class="dropdown-item" href="#">Checklist 1</a>
+        <% if(navOptions.Emergency){ %>
+          <% navOptions["Emergency"].forEach((option) => { %>
+              <a class="dropdown-item" href="#"><%= option %></a>
+          <% }); %>
+        <% } %>
         </div>
       </li>
     </ul>
@@ -55,3 +67,4 @@
     </form>
   </div>
 </nav>
+<br>
