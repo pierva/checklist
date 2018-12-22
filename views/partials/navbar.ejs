@@ -20,7 +20,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMar">
         <% if(navOptions.Marine){ %>
           <% navOptions["Marine"].forEach((option) => { %>
-            <a class="dropdown-item" href="#"><%= option %></a>
+            <a class="dropdown-item" href="/checklists/<%=option.code%>"> <%= option.name %></a>
           <% }); %>
         <% } %>
         </div>
@@ -32,7 +32,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownTec">
         <% if(navOptions.Technical){ %>
           <% navOptions["Technical"].forEach((option) => { %>
-              <a class="dropdown-item" href="#"><%= option %></a>
+              <a class="dropdown-item" href="/checklists/<%=option.code%>"><%= option.name %></a>
           <% }); %>
         <% } %>
         </div>
@@ -44,7 +44,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownEmr">
         <% if(navOptions.Emergency){ %>
           <% navOptions["Emergency"].forEach((option) => { %>
-              <a class="dropdown-item" href="#"><%= option %></a>
+              <a class="dropdown-item" href="/checklists/<%=option.code%>"><%= option.name %></a>
           <% }); %>
         <% } %>
         </div>

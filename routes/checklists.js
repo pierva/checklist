@@ -5,11 +5,16 @@ const middleware = require('../middleware');
 
 //INDEX >>> Show the home page
 router.get("/", (req, res) => {
-  res.render("checklists/index", {page: "home"});
+  res.render("checklists/", {page: "home"});
 });
 
 router.get("/marine", (req, res) => {
   res.render("checklists/marine", {page: "marine"});
+});
+
+router.get("/:code", (req, res) => {
+  var code = req.params.code;
+  res.render(`templates/${code}`, {page: code});
 });
 
 router.get("/technical", (req, res) => {

@@ -1,11 +1,5 @@
 const utilityObj = {}
 
-
-utilityObj.setChecklistOptions = (arr, selector) => {
-  //array contains the list of all checklists names
-
-}
-
 utilityObj.removeItem = (item) =>{
   var formAction = item.attr('action');
   $itemToDelete = item.closest(".checklist-item");
