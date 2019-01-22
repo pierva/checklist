@@ -18,6 +18,7 @@ const checklists          = require("./routes/checklists");
 const settings            = require("./routes/settings");
 const settingsChecklists  = require("./routes/settings-checklists");
 const categories          = require("./routes/categories");
+const checklistsApi       = require("./routes/api_checklists");
 
 const db_url = process.env.DATABASEURL;
 mongoose.connect(db_url, {useNewUrlParser: true});
@@ -69,6 +70,7 @@ app.use("/settings", settings);
 app.use("/settings/users", users);
 app.use("/settings/categories", settingsChecklists);
 categories(app);
+checklistsApi(app);
 
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err._message });

@@ -1,0 +1,179 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<% var items1= [
+  "2 Hours Notice to ECR - Synchronize Clocks between Bridge and ECR",
+  "Test all methods of comms between bridge and ECR and all internal bridge comm systems",
+  "Confirm Operation of VDR",
+  "Check Master Gyro and Alignment of Repeaters - Check Magnetic Compass",
+  "Confirm GMDSS Setup",
+  "Latest Weather Received - Consider Closing Deadlights",
+  "Confirm Correct Track Loaded and Activate Time Schedule on IBS",
+  "Multipilot Configuration and settings Verified",
+  "Review/Adjust ECDIS (Visibility groups, safety contours and associated alarms)",
+  "Echo Sounder alarm set and Appropriate Transducer Selected",
+  "Track Pilot Settings and Limits (select heading + speed + position sensors)",
+  "Confirm Depart Time with Pilot and Port Control - Consider Tugs/Note Other Vessel Movements",
+  "1 Hour Notice to ECR",
+  "Double Steering Pumps + Test Rudders from Center Console and Bridge Wings",
+  "Check Radar Scanners Clearance. Select, Set-up Radars + Performance Check",
+  "Check GPS Set-up",
+  "Change Flags",
+  "Obtain Drafts/DW Density/Manual Soundings",
+  "Check Clearance of Propellers",
+  "Update AIS Voyage Data (Destination and ETA)",
+  "Prepare Master Departure Broadcast (if needed)",
+  "Radios (UHFs/VHFs) Ready",
+  "Complete Stability (Post Freeboard Notice if required)",
+  "Wathertight Doors Closed",
+  "Confirm All Tours Back on Board",
+  "Pilot Card Ready",
+  "Pilot on Board + Name",
+  "Captain and Staff Captain to complete the Take Over Checklist",
+  "Departure Briefing",
+  "Pilot Exchange Briefing",
+  "If any changes update ECR or intended plan",
+  "All LSA Secured for Sea (if at anchor all boats inboard)",
+  "Full Stations Forward and Aft",
+  "Closed Bridge (Computer Pop-up Sent and signs posted at bridge door)"
+]; %>
+
+<% var items2 = [
+  "Test Telegraphs (Main Console and Wings)",
+  "Test Steering (All Modes, All Positions, Alarms, Indicators, Steering Gear Gyro and Comms)",
+  "Check Navigational and Signaling Lights + Shapes + Check Aldis and Battery",
+  "Test Search Light and Wipers",
+  "Visual Check of M.O.B. Lifebuoys",
+  "Check Torches and Binoculars",
+  "Test Whistles (Broadcast To Be Made) and Maneuvering Lights",
+  "Test Radios + Emergency Telephone + Megaphone",
+  "Test Dimmer Switches and Conduct Lamp Test"
+]; %>
+
+<% var items3 = [
+  "SBB - Propulsion and thrusters requested",
+  "Red Manning in Place",
+  "Take Control - Test Thrusters and Propulsion (Wing and Main Console)",
+  "Clearance Granted",
+  "Gangway Landed / Shipped",
+  "All Shell Doors / Pontoons Secured for Sea",
+  "All Positive Reports Received"
+]; %>
+
+<% var items4 = [
+  "Nav. Lights On (Last Line / Anchor Aweigh / Last tender out of the water)",
+  "Update AID with Confirmed SOB + Voyage Status",
+  "Pilot Ladder Rigged and Ready, Pilot requires ships lifejacket: Yes/No",
+  "Lower Flags and Secure Lanyards",
+  "Confirm S/D Alarm on Sea Mode",
+  "Thrusters Off",
+  "Anchor Secured for Sea",
+  "Adjusted Track Pilot Settings as Necessary",
+  "Review/Adjust ECDIS - (Visibility groups, safety contours and associated alarms)",
+  "Full Away On Passage (FAOP)",
+  "Consider to Single up Steering Pumps",
+  "Revert to Appropriate Bridge manning level",
+  "Departure De-Briefing",
+  "Transfer of Charge as Appropriate",
+  "Send Stability (If Not Done Before)",
+  "Status Board Updated for Sea Passage"
+]; %>
+
+<div class="container mt-5 mb-5">
+  <div class="template-header">
+    <h3><%= page %> - DEPARTURE CHECKLIST</h3>
+  </div>
+  <form action="/api/checklist" method="post">
+    <input type="text" name="checklist[code]" value="<%= page %>" class="hidden">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Port</span>
+      </div>
+      <input type="text" class="form-control" placeholder="Port Name" name="checklist[values][port]">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Date</span>
+      </div>
+      <input type="date" class="form-control" name="checklist[values][date]">
+    </div>
+    <div class="row m-0 header-break">
+      <div class="col-10">
+      </div>
+      <div class="col-2">
+        <h4>Tick</h4>
+      </div>
+    </div>
+    <% items1.forEach((item, index) =>{ %>
+      <div class="itemRow row m-0">
+        <div class="col-10">
+          <%= item %>
+        </div>
+        <div class="col-2 text-center">
+          <input type="checkbox" name="checklist[values][item1_<%=index%>]">
+          <span class="checkmark"></span>
+        </div>
+      </div>
+    <% });%>
+
+    <div class="row m-0 header-break">
+      <div class="col-10">
+        Additional Checks if in Port more than 12hrs/After maintenance / Weekly Checks
+      </div>
+      <div class="col-2">
+        Tick
+      </div>
+    </div>
+    <% items2.forEach((item, index) =>{ %>
+      <div class="itemRow row m-0">
+        <div class="col-10">
+          <%= item %>
+        </div>
+        <div class="col-2 text-center">
+          <input type="checkbox" name="checklist[values][item2_<%=index%>]">
+        </div>
+      </div>
+    <% });%>
+
+    <div class="row m-0 header-break">
+      <div class="col-10">
+        Stand By Below
+      </div>
+      <div class="col-2">
+        Tick
+      </div>
+    </div>
+    <% items3.forEach((item, index) =>{ %>
+      <div class="itemRow row m-0">
+        <div class="col-10">
+          <%= item %>
+        </div>
+        <div class="col-2 text-center">
+          <input type="checkbox" name="checklist[values][item3_<%=index%>]">
+        </div>
+      </div>
+    <% });%>
+
+    <div class="row m-0 header-break">
+      <div class="col-10">
+        After Departure
+      </div>
+      <div class="col-2">
+        Tick
+      </div>
+    </div>
+    <% items4.forEach((item, index) =>{ %>
+      <div class="itemRow row m-0">
+        <div class="col-10">
+          <%= item %>
+        </div>
+        <div class="col-2 text-center">
+          <input type="checkbox" name="checklist[values][item4_<%=index%>]">
+        </div>
+      </div>
+    <% });%>
+    <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block">Save</button>
+    </div>
+  </form>
+</div>
+
+<% include ../partials/footer %>

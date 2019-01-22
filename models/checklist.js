@@ -3,9 +3,7 @@ const Schema      = mongoose.Schema;
 const Category    = require("./category");
 
 const ChecklistSchema = new Schema({
-  name: String,
   code: String,
-  revision: Date,
   createdAt: {type: Date, default: Date.now},
   author: {
     id: {

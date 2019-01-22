@@ -1,5 +1,4 @@
 const Category = require('../models/category');
-const Checklist = require('../models/checklist-schema');
 
 module.exports = {
 
