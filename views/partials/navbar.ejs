@@ -19,8 +19,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMar">
         <% if(navOptions.Marine){ %>
-          <% navOptions["Marine"].forEach((option) => { %>
-            <a class="dropdown-item" href="/checklists/<%=option.code%>"> <%= option.name %></a>
+          <% navOptions["Marine"].checklists.forEach((option) => { %>
+            <a class="dropdown-item" href="/checklists/<%=navOptions["Marine"].categoryId%>/<%=option.code%>"> <%= option.name %></a>
           <% }); %>
         <% } %>
         </div>
@@ -31,8 +31,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownTec">
         <% if(navOptions.Technical){ %>
-          <% navOptions["Technical"].forEach((option) => { %>
-              <a class="dropdown-item" href="/checklists/<%=option.code%>"><%= option.name %></a>
+          <% navOptions["Technical"].checklists.forEach((option) => { %>
+              <a class="dropdown-item" href="/checklists/<%=navOptions["Technical"].categoryId%>/<%=option.code%>"><%= option.name %></a>
           <% }); %>
         <% } %>
         </div>
@@ -43,8 +43,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownEmr">
         <% if(navOptions.Emergency){ %>
-          <% navOptions["Emergency"].forEach((option) => { %>
-              <a class="dropdown-item" href="/checklists/<%=option.code%>"><%= option.name %></a>
+          <% navOptions["Emergency"].checklists.forEach((option) => { %>
+              <a class="dropdown-item" href="/checklists/<%=navOptions["Emergency"].categoryId%>/<%=option.code%>"><%= option.name %></a>
           <% }); %>
         <% } %>
         </div>

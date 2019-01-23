@@ -12,9 +12,10 @@ router.get("/marine", (req, res) => {
   res.render("checklists/marine", {page: "marine"});
 });
 
-router.get("/:code", (req, res) => {
+router.get("/:categoryId/:code", (req, res) => {
   var code = req.params.code;
-  res.render(`templates/${code}`, {page: code});
+  var categoryId = req.params.categoryId;
+  res.render(`templates/${code}`, {page: {code: code, categoryId: categoryId}});
 });
 
 router.get("/technical", (req, res) => {

@@ -81,10 +81,9 @@
 
 <div class="container mt-5 mb-5">
   <div class="template-header">
-    <h3><%= page %> - DEPARTURE CHECKLIST</h3>
+    <h3><%= page.code %> - DEPARTURE CHECKLIST</h3>
   </div>
-  <form action="/api/checklist" method="post">
-    <input type="text" name="checklist[code]" value="<%= page %>" class="hidden">
+  <form action="/api/<%=page.categoryId%>/<%=page.code%>" method="post">
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">Port</span>
