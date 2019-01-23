@@ -1,28 +1,32 @@
 const ChecklistInstance = require('../models/checklist');
+const Category = require('../models/category');
 
 module.exports = {
 
   addChecklistInstance(req, res){
+    const code = req.params.code;
     const checklistProps = req.body.checklist;
     const author = {
       id: req.user._id,
       username: req.user.username
     }
-    //find category
     const newChecklist = new ChecklistInstance({
-        code: checklistProps.code,
-        author: author,
-        values: checklistProps.values});
-    newChecklist.save((err, checklist) => {
-      if(err){
-        return res.redirect("back", {"error": err.message});
-      }
-      else{
-        console.log(checklist);
-        req.flash("success", `${checklist.code} checklist successfully saved.`);
-        res.redirect("back");
-      }
-    });
+      code,
+      author,
+      values: checklistProps.values});
+    //find category
+    Category.findById(req.params.categoryId)
+      .then((category) => {
+        category.checklistsCompleted.push(newChecklist);
+        Promise.all([category.save(), newChecklist.save()])
+          .then((newCategory) => {
+            req.flash("success", `${code} checklist successfully saved.`);
+            res.redirect("back");
+          })
+          .catch(err => {
+            return res.redirect("back", {"error": err.message});
+          });
+      });
   },
 
   deleteChecklistInstance(req, res, next){
