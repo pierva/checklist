@@ -8,8 +8,17 @@ router.get("/", (req, res) => {
   res.render("checklists/", {page: "home"});
 });
 
-router.get("/marine", (req, res) => {
-  res.render("checklists/marine", {page: "marine"});
+router.get("/:category", (req, res) => {
+  const category = req.params.category;
+  Category.find({"name": new RegExp(category, "i")})
+    .populate('checklistsCompleted')
+    .exec((err, category) => {
+    if(err){
+      return res.redirect('back', {"error" : "Unable to retrieve checklists for this category from the database."});
+    } else {
+      res.render("checklists/checklist-list", {page: category[0].name, category});
+    }
+  });
 });
 
 router.get("/:categoryId/:code", (req, res) => {
