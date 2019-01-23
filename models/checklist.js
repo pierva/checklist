@@ -4,6 +4,7 @@ const Category    = require("./category");
 
 const ChecklistSchema = new Schema({
   code: String,
+  name: String,
   createdAt: {type: Date, default: Date.now},
   author: {
     id: {

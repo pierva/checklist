@@ -12,6 +12,7 @@ module.exports = {
     }
     const newChecklist = new ChecklistInstance({
       code,
+      name: checklistProps.name,
       author,
       values: checklistProps.values});
     //find category

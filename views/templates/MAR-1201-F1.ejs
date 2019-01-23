@@ -84,6 +84,7 @@
     <h3><%= page.code %> - DEPARTURE CHECKLIST</h3>
   </div>
   <form action="/api/<%=page.categoryId%>/<%=page.code%>" method="post">
+    <input type="text" name="checklist[name]" value="Departure Checklist" class="hidden">
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">Port</span>
