@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+
+<div class="container mt-5">
+  <% if(category.length){ %>
+    <h3 class="list-header">Completed <%=page%> checklists</h3>
+    <% category[0].checklistsCompleted.forEach((checklist) =>{ %>
+      <div class="row list">
+        <div class="col-3">
+          <a href="#"><%= checklist.code%></a>
+        </div>
+        <div class="col-6">
+          <%= checklist.name%>
+        </div>
+        <div class="col-3">
+          <%= moment(checklist.createdAt).format("MM/DD/YYYY HH:mm")%>
+        </div>
+      </div>
+    <% }); %>
+  <%} else { %>
+    <h3 class="list-header">No saved checklists found for <%=page%> category</h3>
+  <%}%>
+</div>
+
+
+
+
+
+
+
+
+<% include ../partials/footer %>
